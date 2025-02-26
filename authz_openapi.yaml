@@ -128,7 +128,7 @@ paths:
                 $ref: '#/components/schemas/StudyAuthorization'
     delete:
       description: Delete a study
-      operationId: authz_operations.remove_study
+      operationId: authz_operations.remove_study_authorization
       responses:
         200:
           description: Success
