@@ -37,50 +37,50 @@ paths:
                 items:
                   type: string
                   description: user_ids
-  /service:
-    get:
-      summary: List registered services
-      operationId: authz_operations.list_services
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ServiceRegistration'
-    post:
-      summary: Register service in authorization system
-      operationId: authz_operations.add_service
-      requestBody:
-        $ref: '#/components/requestBodies/ServiceRegistrationRequest'
-      responses:
-        200:
-          description: Success
-  /service/{service_id}:
-    parameters:
-      - in: path
-        name: service_id
-        schema:
-          type: string
-        required: true
-    get:
-      summary: Get registered service
-      operationId: authz_operations.get_service
-      responses:
-        200:
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ServiceRegistration'
-    delete:
-      summary: Remove registered service
-      operationId: authz_operations.remove_service
-      responses:
-        200:
-          description: Success
+  # /service:
+  #   get:
+  #     summary: List registered services
+  #     operationId: authz_operations.list_services
+  #     responses:
+  #       200:
+  #         description: Success
+  #         content:
+  #           application/json:
+  #             schema:
+  #               type: array
+  #               items:
+  #                 $ref: '#/components/schemas/ServiceRegistration'
+  #   post:
+  #     summary: Register service in authorization system
+  #     operationId: authz_operations.add_service
+  #     requestBody:
+  #       $ref: '#/components/requestBodies/ServiceRegistrationRequest'
+  #     responses:
+  #       200:
+  #         description: Success
+  # /service/{service_id}:
+  #   parameters:
+  #     - in: path
+  #       name: service_id
+  #       schema:
+  #         type: string
+  #       required: true
+  #   get:
+  #     summary: Get registered service
+  #     operationId: authz_operations.get_service
+  #     responses:
+  #       200:
+  #         description: Success
+  #         content:
+  #           application/json:
+  #             schema:
+  #               $ref: '#/components/schemas/ServiceRegistration'
+  #   delete:
+  #     summary: Remove registered service
+  #     operationId: authz_operations.remove_service
+  #     responses:
+  #       200:
+  #         description: Success
   /study:
     post:
       summary: Add authorization information for a study
