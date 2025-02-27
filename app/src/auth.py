@@ -51,30 +51,15 @@ def get_authorized_studies(request):
 
     token = get_auth_token(request)
 
-    body = {
-        "input": {
-            "token": token,
-            "body": {
-                "method": request.method
-            }
-        }
-    }
     if hasattr(request, 'path'):
-        body["input"]["body"]["path"] = request.path
+        path = request.path
     elif hasattr(request, 'url'):
-        body["input"]["body"]["path"] = request.url
+        path = request.url
 
-    headers = {
-        "Authorization": f"Bearer {token}"
-    }
-    response = requests.post(
-        OPA_URL + "/v1/data/permissions",
-        headers=headers,
-        json=body
-    )
-    if response.status_code == 200:
-        if "studies" in response.json()["result"]:
-            return response.json()["result"]["studies"]
+    response, status_code = get_opa_permissions(bearer_token=token, method=request.method, path=path)
+    if status_code == 200:
+        if "studies" in response:
+            return response["studies"]
 
     return []
 
