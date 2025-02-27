@@ -166,3 +166,6 @@ def remove_study_for_user(user_id, study_id):
             response, status_code = auth.write_user(response, token)
             return response, status_code
     return {"error": f"No study {study_id} found for user"}, status_code
+async def is_allowed():
+    action_dict = await connexion.request.json()
+    return False, 200
