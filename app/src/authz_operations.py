@@ -45,9 +45,9 @@ def get_service_info():
 @app.route('/group/<path:group_id>')
 def list_group(group_id):
     try:
-        #if auth.is_site_admin(connexion.request):
-        result, status_code = auth.get_comanage_groups()
-        return result, status_code
+        if auth.is_site_admin(connexion.request):
+            result, status_code = auth.get_comanage_groups()
+            return result[group_id], status_code
         return {"error": "User is not authorized to list groups"}, 403
     except Exception as e:
         return {"error": str(e)}, 500
